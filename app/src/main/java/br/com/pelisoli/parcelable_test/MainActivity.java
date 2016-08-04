@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import br.com.pelisoli.librarytest.Car;
+import br.com.pelisoli.librarytest.Address;
+import br.com.pelisoli.librarytest.Person;
 import br.com.pelisoli.librarytest.LibraryActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
         mStartActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Car car = new Car(getApplicationContext());
-                car.setWheels(4);
+                Person person = new Person();
+                Address address = new Address("Rua oito", 12);
+
+                person.setName("André");
+                person.setAge(28);
+                person.setAddress(address);
 
                 Intent intent = new Intent(getApplicationContext(), LibraryActivity.class);
-                intent.putExtra("parcelable", car);
+                intent.putExtra("personExtra", person);
                 startActivity(intent);
             }
         });
